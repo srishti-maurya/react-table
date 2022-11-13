@@ -17,8 +17,14 @@ export const MyTable = ({ data, setData }: MyTableProps): JSX.Element => {
         alt="collapse"
         className="px-sm"
         onClick={() => setIsCollapsed(!isCollapsed)}
+        style={{ height: 60, width: 60 }}
       />
-      <img src={download} alt="download" className="px-sm" />
+      <img
+        src={download}
+        alt="download"
+        className="px-sm"
+        style={{ height: 60, width: 60 }}
+      />
       <table className="scrollable">
         <thead className="table-head">
           <tr className="space-around">
