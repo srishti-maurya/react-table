@@ -29,3 +29,11 @@ export type MyTableProps = {
   data: Data[];
   setData: React.Dispatch<SetStateAction<Data[]>>;
 };
+
+export type ChartData = { value: Number; name: string };
+
+export type StatusProps = {
+  isReconciled?: boolean;
+  isChart?: boolean;
+  data?: any;
+};

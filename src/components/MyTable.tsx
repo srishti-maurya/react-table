@@ -1,13 +1,14 @@
-import { MyTableProps } from '../types/type';
+import { useState } from 'react';
+import { DownOutlined } from '@ant-design/icons';
 import { Status } from './Status';
 import flag from '../assets/svg/flag.svg';
-import { DownOutlined } from '@ant-design/icons';
-import { compare } from '../utils/compare';
 import collapse from '../assets/svg/collapse.svg';
 import download from '../assets/svg/download.svg';
-import { useState } from 'react';
+import { compare } from '../utils/compare';
+import { MyTableProps } from '../types/type';
+import { netting, reconciled, validated } from '../utils/constants';
 
-export const MyTable = ({ data, setData }: MyTableProps) => {
+export const MyTable = ({ data, setData }: MyTableProps): JSX.Element => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   return (
     <>
@@ -83,16 +84,12 @@ export const MyTable = ({ data, setData }: MyTableProps) => {
                     width: '15vw',
                   }}
                 >
-                  {row.status === 'validated' ? (
-                    <Status isReconciled={false} />
-                  ) : row.status === 'reconciled' ? (
-                    <Status isReconciled={true} />
-                  ) : row.status === 'netting' ? (
-                    <Status
-                      isReconciled={true}
-                      isChart
-                      data={row.netting_summary}
-                    />
+                  {row.status === validated ? (
+                    <Status />
+                  ) : row.status === reconciled ? (
+                    <Status isReconciled />
+                  ) : row.status === netting ? (
+                    <Status isReconciled isChart data={row.netting_summary} />
                   ) : null}
                 </td>
               </tr>

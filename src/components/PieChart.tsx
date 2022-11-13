@@ -1,12 +1,14 @@
 import ReactECharts from 'echarts-for-react';
-import { Chart } from '../types/type';
+import { Chart, ChartData } from '../types/type';
 
-export const PieChart = ({ data }: Chart) => {
-  const newData = [];
+export const PieChart = ({ data }: Chart): JSX.Element => {
+  const formattedData: ChartData[] = [];
   for (const [key, value] of Object.entries(data)) {
-    newData.push({ value: value, name: key });
+    formattedData.push({ value: value, name: key });
   }
-  const modifiedData = newData.filter((item) => item.name !== 'total');
+  const chartData: ChartData[] = formattedData.filter(
+    (item) => item.name !== 'total'
+  );
 
   const option = {
     tooltip: {
@@ -34,7 +36,7 @@ export const PieChart = ({ data }: Chart) => {
         width: '60px',
         height: '60px',
         color: ['#1A73E8', '#D0F4FF', '#6CF9C6'],
-        data: modifiedData,
+        data: chartData,
       },
     ],
   };

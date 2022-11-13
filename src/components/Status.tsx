@@ -1,22 +1,19 @@
-import validation from '../assets/svg/validation.svg';
-import netting from '../assets/svg/netting.svg';
 import { ReconciliationOutlined } from '@ant-design/icons';
 import { PieChart } from './PieChart';
+import validation from '../assets/svg/validation.svg';
+import netting from '../assets/svg/netting.svg';
+import { StatusProps } from '../types/type';
 
 export const Status = ({
   isReconciled,
   isChart,
   data,
-}: {
-  isReconciled?: boolean;
-  isChart?: boolean;
-  data?: any;
-}) => {
+}: StatusProps): JSX.Element => {
   return (
     <div className="center">
       <div className="flex-col">
         <img src={validation} alt="validation" />
-        <p className="desc">Validation</p>
+        <p className="desc">validation</p>
       </div>
       <div className="line"></div>
       <div className="flex-col">
@@ -24,7 +21,7 @@ export const Status = ({
           style={{ color: isReconciled ? '#fff' : '#1A73E8' }}
           className={isReconciled ? 'filled' : 'empty'}
         />
-        <p className="desc">Reconciliation</p>
+        <p className="desc">reconciliation</p>
       </div>
       <div className="line"></div>
       {isChart ? (
